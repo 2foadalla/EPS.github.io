@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momo Yaoyorozu</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .character-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .character-images img {
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        .character-images img:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .modal .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        .modal .arrow.left {
+            left: 20px;
+        }
+        .modal .arrow.right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <label>Momo Yaoyorozu</label>
+    </div>
+
+    <div class="content character-images">
+        <img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/66b858af-cd81-4619-81d4-0e932511401c.jpeg" alt="Momo Yaoyorozu image" data-index="0">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/ezgif-3-61cc2433e7.gif" alt="Momo Yaoyorozu image" data-index="1">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/f0a80e77-b72c-43d1-ba88-f6fb3ed8ec89.jpeg" alt="Momo Yaoyorozu image" data-index="2">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/f2e83f6c-6691-4800-9be5-c379a46132cd.jpeg" alt="Momo Yaoyorozu image" data-index="3">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/images.jpg" alt="Momo Yaoyorozu image" data-index="4">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/k y (1).jpeg" alt="Momo Yaoyorozu image" data-index="5">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Momo Yaoyorozu (1).jpeg" alt="Momo Yaoyorozu image" data-index="6">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Momo Yaoyorozu _ Icon.jpeg" alt="Momo Yaoyorozu image" data-index="7">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/momo-mha-e1697119074699.webp" alt="Momo Yaoyorozu image" data-index="8">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/MOMO.png" alt="Momo Yaoyorozu image" data-index="9">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/My Hero Academia Smash Tap_ Hero suit Yaoyorozu Momo 01 _ My Hero Academia.png" alt="Momo Yaoyorozu image" data-index="10">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/My Hero Academia_ Momo Yaoyorozu enamora a fans en ilustraciones.jpeg" alt="Momo Yaoyorozu image" data-index="11">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20230507_234023_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="12">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_223003_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="13">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_223725_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="14">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_223732_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="15">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_223747_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="16">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_223804_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="17">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_224013_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="18">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Screenshot_20240326_224026_Chrome.jpg" alt="Momo Yaoyorozu image" data-index="19">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/season3ep17-Scene9-1280x720.jpg" alt="Momo Yaoyorozu image" data-index="20">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/sexy.gif" alt="Momo Yaoyorozu image" data-index="21">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/sexy2.gif" alt="Momo Yaoyorozu image" data-index="22">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/thumb.jpeg" alt="Momo Yaoyorozu image" data-index="23">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Untitled_design_1.png" alt="Momo Yaoyorozu image" data-index="24">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Yaoyorozu momo ICONS.jpeg" alt="Momo Yaoyorozu image" data-index="25">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Yaoyorozu Momo __ Boku no Hero Academia.jpeg" alt="Momo Yaoyorozu image" data-index="26">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Yaoyorozu Momo.jpeg" alt="Momo Yaoyorozu image" data-index="27">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/Yaoyorozu Sports Festival.jpeg" alt="Momo Yaoyorozu image" data-index="28">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/yaoyorozu_momo_15638.webp" alt="Momo Yaoyorozu image" data-index="29">
+<img src="F:/Website/albums/Anime/MHA/Momo Yaoyorozu/zmZdGdz.png" alt="Momo Yaoyorozu image" data-index="30">
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="arrow left" id="prev">&#10094;</div>
+        <div class="arrow right" id="next">&#10095;</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.character-images img');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+
+            function openModal(index) {
+                currentIndex = index;
+                modal.style.display = 'flex';
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => openModal(index));
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            window.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') showPrev();
+                    if (e.key === 'ArrowRight') showNext();
+                    if (e.key === 'Escape') closeModal();
+                }
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHA</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ensure all images have the same size but maintain their aspect ratio */
+        .character-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .character-images img {
+            max-width: 300px; /* Adjust this width as needed */
+            max-height: 300px; /* Adjust this height as needed */
+            object-fit: contain; /* Maintain aspect ratio and prevent stretching */
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        .character-images img:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Fullscreen modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .modal .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        .modal .arrow.left {
+            left: 20px;
+        }
+        .modal .arrow.right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <label>MHA</label>
+    </div>
+
+    <div class="content character-images">
+        
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="arrow left" id="prev">&#10094;</div>
+        <div class="arrow right" id="next">&#10095;</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.character-images img');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+
+            function openModal(index) {
+                currentIndex = index;
+                modal.style.display = 'flex';
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => openModal(index));
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            window.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') showPrev();
+                    if (e.key === 'ArrowRight') showNext();
+                    if (e.key === 'Escape') closeModal();
+                }
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
+    

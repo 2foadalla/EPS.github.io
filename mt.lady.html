@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mt.Lady</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .character-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .character-images img {
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        .character-images img:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .modal .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        .modal .arrow.left {
+            left: 20px;
+        }
+        .modal .arrow.right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <label>Mt.Lady</label>
+    </div>
+
+    <div class="content character-images">
+        <img src="F:/Website/albums/Anime/MHA/Mt.Lady/219e67f2-fdc8-4884-a9c8-4b62ab04a15c.jpeg" alt="Mt.Lady image" data-index="0">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/b6b090f0-65b3-4b85-b6e4-9578bc6fc6da.jpeg" alt="Mt.Lady image" data-index="1">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/Mount Lady.jpeg" alt="Mt.Lady image" data-index="2">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/Mt Lady waist on Make a GIF.gif" alt="Mt.Lady image" data-index="3">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/Mt_ Lady _ My Hero Academia.jpeg" alt="Mt.Lady image" data-index="4">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season1ep1-Scene6-720x405.jpg" alt="Mt.Lady image" data-index="5">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season2ep14-Scene7-720x314.jpg" alt="Mt.Lady image" data-index="6">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season2ep2-Scene2-472x480.jpg" alt="Mt.Lady image" data-index="7">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season2ep21-Scene1-434x480.jpg" alt="Mt.Lady image" data-index="8">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season5ep13-Scene3-1-413x480.jpg" alt="Mt.Lady image" data-index="9">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/season5ep13-Scene8_profil-720x405.jpg" alt="Mt.Lady image" data-index="10">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/thumb.jpeg" alt="Mt.Lady image" data-index="11">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/⩩  𝗺𝘁_𝗹 𝗮 𝗱 𝘆  ♡̷̷̷  𝔪𝔶 𝔥𝔢𝔯𝔬 𝔞𝔠𝔞𝔡𝔢𝔪𝔦𝔞 ﹅.jpeg" alt="Mt.Lady image" data-index="12">
+<img src="F:/Website/albums/Anime/MHA/Mt.Lady/🏔Yu Takeyama “MT_ LADY” Aesthetic Wallpaper⛰.jpeg" alt="Mt.Lady image" data-index="13">
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="arrow left" id="prev">&#10094;</div>
+        <div class="arrow right" id="next">&#10095;</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.character-images img');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+
+            function openModal(index) {
+                currentIndex = index;
+                modal.style.display = 'flex';
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => openModal(index));
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            window.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') showPrev();
+                    if (e.key === 'ArrowRight') showNext();
+                    if (e.key === 'Escape') closeModal();
+                }
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
+    

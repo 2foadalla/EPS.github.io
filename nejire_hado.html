@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nejire Hado</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .character-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .character-images img {
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        .character-images img:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        .modal .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 60px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        .modal .arrow.left {
+            left: 20px;
+        }
+        .modal .arrow.right {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <label>Nejire Hado</label>
+    </div>
+
+    <div class="content character-images">
+        <img src="F:/Website/albums/Anime/MHA/Nejire Hado/47c64c92cdb2c17f06fdb6e48260423534e87799r1-600-338_hq.gif" alt="Nejire Hado image" data-index="0">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/ac265d4c-27a7-4078-9262-94a28d4928f2.jpeg" alt="Nejire Hado image" data-index="1">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/B n h a  g i r l s.jpeg" alt="Nejire Hado image" data-index="2">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/b6dfb0d3aed9d6fcbb8828aaaaba68a6421abc8fr1-301-358_hq.gif" alt="Nejire Hado image" data-index="3">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Boku no Hero Academia - Nejire Hado [Ep 25].jpeg" alt="Nejire Hado image" data-index="4">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Icon friends °•_🔭_•°.jpeg" alt="Nejire Hado image" data-index="5">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Nejire__3.jpg" alt="Nejire Hado image" data-index="6">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Screenshot_20230329_224401_Chrome.jpg" alt="Nejire Hado image" data-index="7">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Screenshot_20230913_222224_Brave.jpg" alt="Nejire Hado image" data-index="8">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Screenshot_20240528_230321_Gallery.jpg" alt="Nejire Hado image" data-index="9">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Screenshot_83.png" alt="Nejire Hado image" data-index="10">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Screenshot_84.png" alt="Nejire Hado image" data-index="11">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Symbol Of Light_ BNHA X Infamous crossover.gif" alt="Nejire Hado image" data-index="12">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/TE QUIERO A TI (FINALIZADA).jpeg" alt="Nejire Hado image" data-index="13">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/thumb.gif" alt="Nejire Hado image" data-index="14">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Untitled_design_1-2.png" alt="Nejire Hado image" data-index="15">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/Untitled_design_1-3.png" alt="Nejire Hado image" data-index="16">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/꒰ 𝐍𝐞𝐢𝐣𝐞𝐫𝐞 𝐇𝐚𝐝𝗼 ꒱ (1).jpeg" alt="Nejire Hado image" data-index="17">
+<img src="F:/Website/albums/Anime/MHA/Nejire Hado/꒰ 𝐍𝐞𝐢𝐣𝐞𝐫𝐞 𝐇𝐚𝐝𝗼 ꒱.jpeg" alt="Nejire Hado image" data-index="18">
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="arrow left" id="prev">&#10094;</div>
+        <div class="arrow right" id="next">&#10095;</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.character-images img');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+
+            function openModal(index) {
+                currentIndex = index;
+                modal.style.display = 'flex';
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                modalImg.src = images[currentIndex].src;
+            }
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => openModal(index));
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrev);
+            nextBtn.addEventListener('click', showNext);
+
+            window.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'flex') {
+                    if (e.key === 'ArrowLeft') showPrev();
+                    if (e.key === 'ArrowRight') showNext();
+                    if (e.key === 'Escape') closeModal();
+                }
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
+</body>
+</html>
+    
